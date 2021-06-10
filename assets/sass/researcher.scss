@@ -5,6 +5,8 @@ $avatar-size: {{ .Param "style.avatarSize" | default "90px;" }};
 // Colors
 $black: {{ .Param "style.colorBlack" | default "#222222" }};
 $red: {{ .Param "style.colorRed" | default "#dc3545" }};
+$background: {{ .Param "style.colorBackground" | default "#ffffff" }}; 
+$semiblack: {{ .Param "style.colorSemiBlack" | default "#444444" }};
 
 // Font
 $font-family: {{ .Param "style.fontFamily" | default "Inconsolata" }};
@@ -43,6 +45,9 @@ $y-medium: 1.0rem;
 }
 
 // Style
+body {
+    background-color: $background;
+}
 * {
     color: $black;
     font-family: $font-family;
@@ -54,6 +59,10 @@ $y-medium: 1.0rem;
 .navbar-brand {
     @extend %link-dark;
     font-size: 2rem;
+}
+.navbar-subtitle {
+    font-size: 2rem;
+    color: $semiblack;
 }
 .nav-link {
     @extend %link-default;
@@ -90,18 +99,30 @@ $y-medium: 1.0rem;
     ol {
         counter-reset: list;
         list-style: none;
-        padding-left: 2rem;
-        & > li:before {
-            content: "[" counter(list, decimal) "] ";
+        list-style-position: outside;
+        margin-left: 2.5rem;
+        // padding-left: 2rem;
+        & > li {
             counter-increment: list;
         }
+        & > li::marker {
+            content: "[" counter(list) "]\a0\a0";
+        }
+    }
+    .backwards > li {
+        counter-increment: list -1;
     }
     .container > ol, .footnotes > ol {
         padding-left: 0;
     }
     ul {
-        list-style: inside;
+        list-style: outside;
         padding-left: 2rem;
+        margin-left: 1rem;
+
+        & > li::marker {
+            content: ">\a0";
+        }
     }
     .container > ul, .footnotes > ul {
         padding-left: 0;

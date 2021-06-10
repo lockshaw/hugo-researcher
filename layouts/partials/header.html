@@ -1,11 +1,16 @@
 <div class="container mt-5">
     <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
-        <a class="navbar-brand mx-0 mr-sm-auto" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
-          {{ with .Site.Params.logo }}
-            <img src="{{ . | absURL }}" alt="logo">
-          {{ end }}
-          {{ .Site.Title }}
-        </a>
+        <span class="mx-0 mr-sm-auto">
+            <a class="navbar-brand" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+              {{ with .Site.Params.logo }}
+                <img src="{{ . | absURL }}" alt="logo">
+              {{ end }}
+              {{ .Site.Title }}
+            </a>
+            {{ with .Site.Params.subtitle }}
+              <span class="navbar-subtitle">{{ . }}</span>
+            {{ end }}
+        </span>
         <div class="navbar-nav flex-row flex-wrap justify-content-center">
             {{ with .Site.Menus.main }}
                 {{ $navbar_len := len . }}
