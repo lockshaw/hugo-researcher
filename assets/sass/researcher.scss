@@ -1,6 +1,7 @@
 // Sizes
 $max-width: {{ .Param "style.pageWidth" | default "750px;" }};
 $avatar-size: {{ .Param "style.avatarSize" | default "90px;" }};
+$small: "768px";
 
 // Colors
 $black: {{ .Param "style.colorBlack" | default "#222222" }};
@@ -95,6 +96,13 @@ body {
         margin: -8px 0 0 16px;
         height: $avatar-size;
         width: $avatar-size;
+        @media screen and (max-width: $small) {
+            float: none;
+            display: block;
+            margin-top: 8px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
     ol {
         counter-reset: list;
