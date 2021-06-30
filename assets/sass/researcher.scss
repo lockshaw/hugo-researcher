@@ -6,7 +6,7 @@ $small: "768px";
 // Colors
 $black: {{ .Param "style.colorBlack" | default "#222222" }};
 $red: {{ .Param "style.colorRed" | default "#dc3545" }};
-$background: {{ .Param "style.colorBackground" | default "#ffffff" }}; 
+$background: {{ .Param "style.colorBackground" | default "#ffffff" }};
 $semiblack: {{ .Param "style.colorSemiBlack" | default "#444444" }};
 
 // Font
@@ -48,8 +48,6 @@ $y-medium: 1.0rem;
 // Style
 body {
     background-color: $background;
-}
-* {
     color: $black;
     font-family: $font-family;
     line-height: 1.2;
